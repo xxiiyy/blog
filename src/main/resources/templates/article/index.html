@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <meta name="keywords" content="lhdzzz博客">
+    <meta name="description" content="lhdzzz博客">
+
+    <title>lhdzzz博客</title>
+
+    <!-- stylesheets list from config.yml -->
+
+    <link rel="stylesheet" href="/css/materialize.min.css">
+
+    <link rel="stylesheet" href="/css/Vateral.min.css">
+
+
+    <style type="text/css">
+        html, body {
+            font-family: sans-serif;
+            font-weight: 300 !important;
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(/fonts/MaterialIcons-Regular.eot);
+            src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+            url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+            url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+        }
+    </style>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css">
+    <script src="/js/prism.js"></script>
+</head>
+<body>
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+<a data-activates="slide-out" class="button-collapse">
+    <div class="nav-btn"><i class="material-icons">list</i></div>
+</a>
+
+<#include "menu.html">
+
+<!-- content begin-->
+<div id="content-outer">
+    <div id="content-inner">
+
+        <div class="post-header" style="background-image:url(/images/coverpic.jpg)">
+            <a href="/index">
+                <div class="post-header-title">
+                    <p style="">
+                        第一次搭建博客，希望喜欢，用的是朋友的模板
+                        <br>
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div id="recent-posts">
+            <!-- new blog -->
+            <div class="recent-post-item lazy" style="min-height: 150px"
+                 data-original="/images/random/bg12.jpg">
+                <a class="recent-post-link" href="/article-detail/2d4ad71bfc0f477c85faf4b0797685d2" style="min-height: 150px">
+                    <div class="post-hover" style="min-height: 150px;text-align: center;padding: 20px 20px 20px 20px;">
+                        <!--title-->
+                        <p class="post-title" style="line-height: 50px"><a href="/article-detail/2d4ad71bfc0f477c85faf4b0797685d2">[置顶]&nbsp在服务器上搭建hexo博客</a>
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- for begin -->
+            <#list articles as article>
+                <div class="recent-post-item lazy" data-original="${article.cover}">
+                    <a class="recent-post-link" href="/article-detail/${article.id}">
+                        <div class="post-hover">
+                            <!--title-->
+                            <p class="post-title"><a href="/article-detail/${article.id}">${article.title}</a></p>
+
+                            <!--date-->
+                            <p class="post-time">${article.author} &nbsp &nbsp 发布于:
+                                <time datetime="2017-05-16T07:26:11.000Z">
+                                    ${article.createTime?string('yyyy-MM-dd')}
+                                </time>
+                            </p>
+
+                            <!--tags-->
+                            标签:
+                            <ul class="tag-list">
+                                <li class="tag-list-item"><a class="tag-list-link"
+                                                             href="/article-detail/${article.id}">${article.tagId}</a></li>
+                            </ul>
+
+                            <!--分类-->
+                            分类:
+                            <ul class="category-list">
+                                <li class="category-list-item"><a class="category-list-link"
+                                                                  href="/article-detail/${article.id}">${article.classify}</a>
+                                </li>
+                            </ul>
+
+                            <!--excerpt-->
+                            <div class="post-excerpt">
+                                <p>${article.subtitle}</p>
+                            </div>
+                            <div class="post-more"><a href="/article-detail/${article.id}">全文阅读</a></div>
+                        </div>
+                    </a>
+                </div>
+            </#list>
+            <!-- for end -->
+            ${pagination}
+        </div>
+
+
+    </div>
+</div>
+<!-- content end -->
+
+<div id="bottom-outer">
+    <div id="bottom-inner">
+        <a id="top-button" onfocus="this.blur();">
+            <div class="up"><i class="material-icons material-up">vertical_align_top</i></div>
+        </a>
+        Copyright © 2017 lhdzzz<br>
+        Powered by <a href="https://hexo.io/" target="_blank"> java </a> && Theme - <a
+            href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a>
+    </div>
+</div>
+
+</body>
+<!--影集界面需要的资源-->
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/lazyload.min.js"></script>
+
+<script src="/js/jquery.rotate.min.js"></script>
+
+<script src="/js/Vateral.min.js"></script>
+
+
+</html>

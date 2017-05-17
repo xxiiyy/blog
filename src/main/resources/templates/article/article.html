@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <meta name="keywords" content="lhdzzz博客">
+    <meta name="description" content="lhdzzz博客">
+
+    <title>lhdzzz博客</title>
+
+    <!-- stylesheets list from config.yml -->
+
+    <link rel="stylesheet" href="/css/materialize.min.css">
+
+    <link rel="stylesheet" href="/css/Vateral.min.css">
+
+    <style type="text/css">
+        html, body {
+            font-family: sans-serif;
+            font-weight: 300 !important;
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(/fonts/MaterialIcons-Regular.eot);
+            src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+            url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+            url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+        }
+    </style>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css">
+    <script src="/js/prism.js"></script>
+    <!-- markdown解析 -->
+    <script src="/markdown/marked.min.js"></script>
+</head>
+<body>
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+<a data-activates="slide-out" class="button-collapse">
+    <div class="nav-btn"><i class="material-icons">list</i></div>
+</a>
+
+<#include "menu.html">
+
+    <div id="content-outer">
+        <div id="content-inner">
+            <article id="post">
+                <div class="post-page-title"
+                     style="background-image:url(${article.cover})">
+                    <h2>${article.title}</h2>
+
+                    <p>作者:${article.author} &nbsp&nbsp 发布于:
+                        <time datetime="2017-01-28T03:15:50.000Z">
+                            ${article.createTime?string('yyyy-MM-dd')}
+                        </time>
+                    </p>
+
+                </div>
+                <textarea hidden="hidden" id="text" style="width: 100px;height: 100px;">${article.content}</textarea>
+                <div id="content" class="post-page-content">
+                </div>
+                <script>
+                    var content = document.getElementById('text').value;
+                    document.getElementById('content').innerHTML =
+                        marked(content);
+                </script>
+                <!-- <div id="SOHUCS" style="padding:15px"></div>-->
+            </article>
+            <nav class="post-nav">
+                <!-- Prev Nav -->
+                <a href="/2017/03/16/nodejs部署到阿里云全过程/" id="post_nav-newer" class="post-nav-content prev-content">
+                    新篇
+                </a>
+                <!-- Next Nav -->
+            </nav>
+        </div>
+    </div>
+    <div id="bottom-outer">
+        <div id="bottom-inner">
+            <a id="top-button" onfocus="this.blur();">
+                <div class="up"><i class="material-icons material-up">vertical_align_top</i></div>
+            </a>
+            Copyright © 2017 lhdzzz博客<br>
+            Powered by <a href="https://hexo.io/" target="_blank"> java </a> && Theme - <a
+                href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a>
+        </div>
+    </div>
+</body>
+<!--影集界面需要的资源-->
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/lazyload.min.js"></script>
+
+<script src="/js/jquery.rotate.min.js"></script>
+
+<script src="/js/Vateral.min.js"></script>
+
+
+</html>
