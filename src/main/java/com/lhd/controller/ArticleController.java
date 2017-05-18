@@ -17,6 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.util.*;
@@ -176,14 +180,33 @@ public class ArticleController {
      * @return
      */
     @RequestMapping(value = "article-detail/{articleId}")
-    public String articleDetail(Model model,@PathVariable("articleId")String articleId){
+    public String articleDetail(Model model,@PathVariable("articleId")String articleId) throws IOException {
         ArticleDto articleDto = articleService.selectArticleDto(articleId);
+        articleDto.setContent(getMarkdown(articleDto.getContent()));
         model.addAttribute("article",articleDto);
         List<Classify> classifies = classifyService.selectClassifyList();
         addCount(classifies);
         model.addAttribute("archives",getArchive());
         model.addAttribute("classifies",classifies);
         return "article/article";
+    }
+
+    /**
+     * 获取markdown文件信息
+     * @param rootPath
+     * @return
+     * @throws IOException
+     */
+    private String getMarkdown(String rootPath) throws IOException {
+        File file = new File(rootPath);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        StringBuffer suf = new StringBuffer();
+        String content;
+        while((content = br.readLine())!=null){
+            suf.append(content);
+        }
+        br.close();
+        return suf.toString();
     }
 
     /**
