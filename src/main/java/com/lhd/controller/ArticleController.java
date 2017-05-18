@@ -2,6 +2,7 @@ package com.lhd.controller;
 
 import com.lhd.dto.ArchiveDto;
 import com.lhd.dto.ArticleDto;
+import com.lhd.entity.Article;
 import com.lhd.entity.Classify;
 import com.lhd.entity.Friend;
 import com.lhd.entity.Tag;
@@ -43,7 +44,7 @@ public class ArticleController {
     private FriendServiceImpl friendService;
 
     /**
-     * 查询所有博客
+     * 查询所有博客，分页查询
      * @param model
      * @param pageNo
      * @return
@@ -57,15 +58,76 @@ public class ArticleController {
         paramMap.put("startNo",(no-1)*4);
         paramMap.put("pageSize",4);
         List<ArticleDto> articleDtos = articleService.selectArticleDtoList(paramMap);
+        addAllTagChain(articleDtos);
         List<Classify> classifies = classifyService.selectClassifyList();
         addCount(classifies);
         int count = articleService.selectCountByClassifyId(new HashMap<>());
-        String pagination = PageUtils.getPagination(no, "index", count);
+        String pagination = PageUtils.getPagination(no, "index", count/4+1);
         model.addAttribute("archives",getArchive());
         model.addAttribute("pagination",pagination);
         model.addAttribute("classifies",classifies);
         model.addAttribute("articles",articleDtos);
         return "article/index";
+    }
+
+    /**
+     * 遍历全部的article
+     * @param articles
+     */
+    private void addAllTagChain(List<ArticleDto> articles){
+        for (ArticleDto article:articles){
+            String tagChain = getTagChain(tagService.selectTagIdByArticleId(article.getId()));
+            article.setTagChain(tagChain);
+        }
+    }
+
+    /**
+     * 获取标签链
+     * @param tagIdList
+     * @return
+     */
+    private String getTagChain(List<String> tagIdList){
+        String tagChain = "";
+        for (String tagId:tagIdList){
+            Tag tag = tagService.selectTagByTagId(tagId);
+            if(tag != null&&tag.getTagName() != null)
+                tagChain += " "+tag.getTagName();
+        }
+        return tagChain.trim();
+    }
+
+
+    /**
+     * 拥有这个tag的文章
+     * @param model
+     * @param tagId
+     * @return
+     */
+    @RequestMapping(value = "tag-list-article/{tagId}")
+    public String tagList(Model model,@PathVariable("tagId") String tagId){
+        List<Classify> classifies = classifyService.selectClassifyList();
+        addCount(classifies);
+        model.addAttribute("archives",getArchive());
+        model.addAttribute("classifies",classifies);
+        Tag tag = tagService.selectTagByTagId(tagId);
+        List<String> articleIds = tagService.selectArticleIdByTagId(tag.getId());
+        model.addAttribute("articles",getArticleUseArticleId(articleIds));
+        return "article/common";
+    }
+
+    /**
+     * 使用文章id集合获取文章集合
+     * @param articleIds
+     * @return
+     */
+    private List<ArticleDto> getArticleUseArticleId(List<String> articleIds){
+        List<ArticleDto> articles = new ArrayList<>();
+        for (String articleId:articleIds){
+            ArticleDto article = articleService.selectArticleDto(articleId);
+            articles.add(article);
+        }
+        addAllTagChain(articles);
+        return articles;
     }
 
     /**
@@ -84,6 +146,7 @@ public class ArticleController {
         paramMap.put("pageSize",20);
         paramMap.put("classifyId",classifyId);
         List<ArticleDto> articleDtos = articleService.selectArticleDtoList(paramMap);
+        addAllTagChain(articleDtos);
         List<Classify> classifies = classifyService.selectClassifyList();
         addCount(classifies);
         model.addAttribute("archives",getArchive());
@@ -140,7 +203,7 @@ public class ArticleController {
     }
 
     /**
-     * 每个月的博客信息
+     * 每个月的博客信息,归档
      * @return
      */
     @RequestMapping(value = "archive-month/{year}/{month}")
@@ -156,6 +219,7 @@ public class ArticleController {
         model.addAttribute("archives",getArchive());
         model.addAttribute("classifies",classifies);
         List<ArticleDto> articles = articleService.selectArticleYM(archiveDto);
+        addAllTagChain(articles);
         model.addAttribute("articles",articles);
         return "article/common";
     }
@@ -169,6 +233,10 @@ public class ArticleController {
         return "article/about";
     }
 
+    /**
+     * 获取归档信息
+     * @return
+     */
     private List<ArchiveDto> getArchive(){
         Calendar calendar = Calendar.getInstance();
         int nowYear = calendar.get(Calendar.YEAR);
@@ -182,7 +250,7 @@ public class ArticleController {
     }
 
     /**
-     * 添加classify属性
+     * 添加classify属性，添加这个分类一共有多少篇博客
      * @param classifies
      */
     private void addCount(List<Classify> classifies){

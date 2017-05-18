@@ -8,4 +8,31 @@
         FROM sys_tag
     </select>
 
+    <select id="selectTagIdByArticleId" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT tagId
+        FROM sys_article_tag
+        WHERE articleId=#{articleId}
+    </select>
+
+    <select id="selectTagByTagId" parameterType="java.lang.String"
+            resultType="com.lhd.entity.Tag">
+        SELECT *
+        FROM sys_tag
+        WHERE id = #{tagId}
+    </select>
+
+    <select id="selectTagByTagName" parameterType="java.lang.String"
+            resultType="com.lhd.entity.Tag">
+        SELECT *
+        FROM sys_tag
+        WHERE id = #{tagName}
+    </select>
+
+    <!-- 使用tagId获取文章id -->
+    <select id="selectArticleIdByTagId" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT articleId
+        FROM sys_article_tag
+        WHERE tagId = #{tagId}
+    </select>
+
 </mapper>

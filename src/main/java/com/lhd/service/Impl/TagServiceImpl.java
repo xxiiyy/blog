@@ -23,4 +23,24 @@ public class TagServiceImpl  implements ITagService{
     public List<Tag> selectTagList() {
         return tagMapper.selectTagList();
     }
+
+    @Override
+    public List<String> selectTagIdByArticleId(String articleId) {
+        return tagMapper.selectTagIdByArticleId(articleId);
+    }
+
+    @Override
+    public Tag selectTagByTagId(String tagId) {
+        return tagMapper.selectTagByTagId(tagId);
+    }
+
+    @Override
+    public Tag selectTagByTagName(String tagName) {
+        return tagMapper.selectTagByTagName(tagName);
+    }
+
+    @Override
+    public List<String> selectArticleIdByTagId(String tagId) {
+        return tagMapper.selectArticleIdByTagId(tagId);
+    }
 }

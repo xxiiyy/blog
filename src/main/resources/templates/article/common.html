@@ -7,21 +7,19 @@
     <meta name="keywords" content="lhdzzz博客">
     <meta name="description" content="lhdzzz博客">
 
-    <title>lhdzzz博客</title>
-
+    <title>lhdzzz & blog</title>
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="/ico/icon.ico" type="image/x-icon"/>
     <!-- stylesheets list from config.yml -->
 
     <link rel="stylesheet" href="/css/materialize.min.css">
-
     <link rel="stylesheet" href="/css/Vateral.min.css">
-
 
     <style type="text/css">
         html, body {
             font-family: sans-serif;
             font-weight: 300 !important;
         }
-
         @font-face {
             font-family: 'Material Icons';
             font-style: normal;
@@ -58,7 +56,7 @@
                             <p class="post-title"><a href="/article-detail/${article.id}">${article.title}</a></p>
 
                             <!--date-->
-                            <p class="post-time">${article.author} &nbsp &nbsp 发布于:
+                            <p class="post-time">作者: ${article.author} &nbsp &nbsp 发布于:
                                 <time datetime="2017-05-16T07:26:11.000Z">
                                     ${article.createTime?string('yyyy-MM-dd')}
                                 </time>
@@ -67,13 +65,13 @@
                             <!--tags-->
                             标签:
                             <ul class="tag-list">
-                                <li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">${article.tagId}</a></li>
+                                <li class="tag-list-item"><a class="tag-list-link" href="/article-detail/${article.id}">${article.tagChain}</a></li>
                             </ul>
 
                             <!--分类-->
                             分类:
                             <ul class="category-list">
-                                <li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">${article.classify}</a>
+                                <li class="category-list-item"><a class="category-list-link" href="/article-detail/${article.id}">${article.classify}</a>
                                 </li>
                             </ul>
 
@@ -95,7 +93,6 @@
             </nav>
         </div>
 
-
     </div>
 </div>
     <#include "foot.html">
@@ -103,18 +100,11 @@
 </body>
 <!--影集界面需要的资源-->
 
-
 <!-- scripts list from theme config.yml -->
-
 <script src="/js/jquery-3.1.1.min.js"></script>
-
 <script src="/js/materialize.min.js"></script>
-
 <script src="/js/lazyload.min.js"></script>
-
 <script src="/js/jquery.rotate.min.js"></script>
-
 <script src="/js/Vateral.min.js"></script>
-
 
 </html>

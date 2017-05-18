@@ -7,21 +7,19 @@
     <meta name="keywords" content="lhdzzz博客">
     <meta name="description" content="lhdzzz博客">
 
-    <title>lhdzzz博客</title>
+    <title>lhdzzz & blog</title>
 
     <!-- stylesheets list from config.yml -->
-
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="/ico/icon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/css/materialize.min.css">
-
     <link rel="stylesheet" href="/css/Vateral.min.css">
-
 
     <style type="text/css">
         html, body {
             font-family: sans-serif;
             font-weight: 300 !important;
         }
-
         @font-face {
             font-family: 'Material Icons';
             font-style: normal;
@@ -52,14 +50,11 @@
                 <ul class="tag-list">
                     <#list tags as tag>
                         <li class="tag-list-item">
-                            <a class="tag-list-link" href="/tag-list/${tag.id}">${tag.tagName}</a>
+                            <a class="tag-list-link" href="/tag-list-article/${tag.id}">${tag.tagName}</a>
                         </li>
                     </#list>
                 </ul>
-
             </div>
-
-
         </div>
     </div>
 </div>
@@ -69,19 +64,11 @@
 </body>
     <!--影集界面需要的资源-->
 
-
     <!-- scripts list from theme config.yml -->
-
     <script src="/js/jquery-3.1.1.min.js"></script>
-
     <script src="/js/materialize.min.js"></script>
-
     <script src="/js/lazyload.min.js"></script>
-
     <script src="/js/jquery.rotate.min.js"></script>
-
     <script src="/js/Vateral.min.js"></script>
-
-
 
 </html>
