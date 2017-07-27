@@ -19,7 +19,7 @@ import java.util.*;
  * Created by lhd on 2017/7/26.
  */
 @Controller
-public class ESArticleController {
+public class SearchController {
 
     @Autowired
     private ArticleElasticsearch articleElasticsearch;

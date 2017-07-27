@@ -2,8 +2,8 @@
 <div id="menu-outer">
     <div id="menu-inner">
         <ul id="slide-out" class="side-nav">
-            <div class="nav-header" style="background-image: url(/images/head-bg.jpg)">
-                <div class="header-box"><img src="/images/photo.jpg"
+            <div class="nav-header" style="background-image: url(/blog/images/head-bg.jpg)">
+                <div class="header-box"><img src="/blog/images/photo.jpg"
                                              ondragstart="return false;"></div>
                 <p>recall</p>
                 <div class="nav-link">
@@ -42,7 +42,7 @@
 
             <!--Homepage-->
             <li class="nav-list">
-                <a href="/" target="_self">
+                <a href="/blog" target="_self">
                     <div class="nav-ico"><i class="material-icons">home</i></div>
                     <p>主页</p>
                 </a>
@@ -59,7 +59,7 @@
             <ul class="dropdown-menu dropdown">
                 <#list archives as archive>
                     <li class="nav-dropdown-list">
-                        <a class="archive-link" href="/archive-month/${archive.aYear?c}/${archive.aMonth}">${archive.aYear?c}年${archive.aMonth}月<span
+                        <a class="archive-link" href="/blog/archive-month/${archive.aYear?c}/${archive.aMonth}">${archive.aYear?c}年${archive.aMonth}月<span
                                 class="archive-count">${archive.aCount}</span></a>
                     </li>
                 </#list>
@@ -76,14 +76,14 @@
             <ul class="dropdown-menu dropdown">
                 <#list classifies as classify>
                     <li class="nav-dropdown-list">
-                        <a class="category-link" href="/article-classify/${classify.id}">${classify.classify}<span
+                        <a class="category-link" href="/blog/article-classify/${classify.id}">${classify.classify}<span
                                 class="category-count">${classify.num}</span></a></li>
                 </#list>
             </ul>
 
             <!--tags-->
             <li class="nav-list">
-                <a href="/tag/tag-list" target="_self">
+                <a href="/blog/tag/tag-list" target="_self">
                     <div class="nav-ico"><i class="material-icons">bookmark</i></div>
                     <p>标签</p>
                 </a>
@@ -91,7 +91,7 @@
 
             <!--搜索-->
             <li class="nav-list">
-                <a href="/search" target="_self">
+                <a href="/blog/search" target="_self">
                     <div class="nav-ico"><i class="material-icons">insert_photo</i></div>
                     <p>搜索</p>
                 </a>
@@ -99,7 +99,7 @@
 
             <!--photo-->
             <li class="nav-list">
-                <a href="/photo/photo" target="_self">
+                <a href="/blog/photo/photo" target="_self">
                     <div class="nav-ico"><i class="material-icons">insert_photo</i></div>
                     <p>影集</p>
                 </a>
@@ -107,7 +107,7 @@
 
             <!--friends-->
             <li class="nav-list">
-                <a href="/friend/friend" target="_self">
+                <a href="/blog/friend/friend" target="_self">
                     <div class="nav-ico"><i class="material-icons">face</i></div>
                     <p>友链</p>
                 </a>
@@ -115,7 +115,7 @@
 
             <!--about-->
             <li class="nav-list">
-                <a href="/about/about" target="_self">
+                <a href="/blog/about/about" target="_self">
                     <div class="nav-ico"><i class="material-icons">copyright</i></div>
                     <p>关于</p>
                 </a>

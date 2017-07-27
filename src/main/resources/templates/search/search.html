@@ -8,8 +8,8 @@
 
     <title>recall & blog</title>
 
-    <link rel="stylesheet" href="/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/Vateral.min.css">
+    <link rel="stylesheet" href="/blog/css/materialize.min.css">
+    <link rel="stylesheet" href="/blog/css/Vateral.min.css">
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="/ico/icon.ico" type="image/x-icon"/>
 
@@ -22,14 +22,14 @@
             font-family: 'Material Icons';
             font-style: normal;
             font-weight: 400;
-            src: url(/fonts/MaterialIcons-Regular.eot);
-            src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
-            url(/fonts/MaterialIcons-Regular.woff) format('woff'),
-            url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+            src: url(/blog/fonts/MaterialIcons-Regular.eot);
+            src: url(/blog/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+            url(/blog/fonts/MaterialIcons-Regular.woff) format('woff'),
+            url(/blog/fonts/MaterialIcons-Regular.ttf) format('truetype')
         }
     </style>
-    <link rel="stylesheet" href="/css/prism.css" type="text/css">
-    <script src="/js/prism.js"></script>
+    <link rel="stylesheet" href="/blog/css/prism.css" type="text/css">
+    <script src="/blog/js/prism.js"></script>
 </head>
 <body>
 <div class="progress">
@@ -75,38 +75,44 @@
 <!--影集界面需要的资源-->
 
 <!-- scripts list from theme config.yml -->
-<script src="/js/jquery-3.1.1.min.js"></script>
-<script src="/js/materialize.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/jquery.rotate.min.js"></script>
-<script src="/js/Vateral.min.js"></script>
+<script src="/blog/js/jquery-3.1.1.min.js"></script>
+<script src="/blog/js/materialize.min.js"></script>
+<script src="/blog/js/lazyload.min.js"></script>
+<script src="/blog/js/jquery.rotate.min.js"></script>
+<script src="/blog/js/Vateral.min.js"></script>
 
 <script>
     function searches() {
         var info = $('#search-input').val();
         $.ajax({
             type: "GET",
-            url: "/search/"+info,
+            url: "/blog/search/"+info,
             dataType: "json",
             success: function(data){
+
                 $('#recent-posts').empty();   //清空resText里面的所有内容
                 var html = '';
                 $.each(data, function(commentIndex, comment){
+                    var date = new Date(comment['createTime']); //获取一个时间对象  注意：如果是uinx时间戳记得乘于1000。比如php函数time()获得的时间戳就要乘于1000
+                    var y = date.getFullYear();//获取完整的年份(4位,1970)
+                    var m = 1+date.getMonth();//获取月份(0-11,0代表1月,用的时候记得加上1)
+                    if(m < 10) m = "0"+m;
+                    var d = date.getDate();//获取日(1-31)
                     html += '<div class="recent-post-item lazy" data-original="'+ comment['cover'] +'">'
-                        + '<a class="recent-post-link" href="/article-detail/'+ comment['id'] +'">'
+                        + '<a class="recent-post-link" href="/blog/article-detail/'+ comment['id'] +'">'
                         + '<div class="post-hover">'
-                        + '<p class="post-title"><a href="/article-detail/'+comment['id']+'">'+comment['title']+'</a></p>'
+                        + '<p class="post-title"><a href="/blog/article-detail/'+comment['id']+'">'+comment['title']+'</a></p>'
                         + '<p class="post-time">作者: '+comment['author']+' &nbsp &nbsp 发布于:'
                         + '<time datetime="2017-05-16T07:26:11.000Z">'
-                        + comment['createTime']
+                        + y+'-'+m+'-'+d
                         + '</time></p>'
                         + '标签: <ul class="tag-list">'
-                        + '<li class="tag-list-item"><a class="tag-list-link" href="/article-detail/'+ comment['id']+'">'+ comment['tagChain']+'</a></li> </ul>'
+                        + '<li class="tag-list-item"><a class="tag-list-link" href="/blog/article-detail/'+ comment['id']+'">'+ comment['tagChain']+'</a></li> </ul>'
                         + ' 分类: <ul class="category-list">'
-                        + '<li class="category-list-item"><a class="category-list-link" href="/article-detail/'+ comment['id']+'">'+ comment['classify']+'</a> </li> </ul>'
+                        + '<li class="category-list-item"><a class="category-list-link" href="/blog/article-detail/'+ comment['id']+'">'+ comment['classify']+'</a> </li> </ul>'
                         + '<div class="post-excerpt"> <p>'
                         +  comment['subtitle'] + '</p> </div>'
-                        + '<div class="post-more"><a href="/article-detail/'+ comment['id']+'">全文阅读</a></div>'
+                        + '<div class="post-more"><a href="/blog/article-detail/'+ comment['id']+'">全文阅读</a></div>'
                         + '</div> </a> </div>';
                 });
                 $('#recent-posts').html(html);

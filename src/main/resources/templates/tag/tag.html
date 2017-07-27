@@ -12,8 +12,8 @@
     <!-- stylesheets list from config.yml -->
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="/ico/icon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/Vateral.min.css">
+    <link rel="stylesheet" href="/blog/css/materialize.min.css">
+    <link rel="stylesheet" href="/blog/css/Vateral.min.css">
 
     <style type="text/css">
         html, body {
@@ -24,14 +24,14 @@
             font-family: 'Material Icons';
             font-style: normal;
             font-weight: 400;
-            src: url(/fonts/MaterialIcons-Regular.eot);
-            src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
-            url(/fonts/MaterialIcons-Regular.woff) format('woff'),
-            url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+            src: url(/blog/fonts/MaterialIcons-Regular.eot);
+            src: url(/blog/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+            url(/blog/fonts/MaterialIcons-Regular.woff) format('woff'),
+            url(/blog/fonts/MaterialIcons-Regular.ttf) format('truetype')
         }
     </style>
-    <link rel="stylesheet" href="/css/prism.css" type="text/css">
-    <script src="/js/prism.js"></script>
+    <link rel="stylesheet" href="/blog/css/prism.css" type="text/css">
+    <script src="/blog/js/prism.js"></script>
 </head>
 <body>
 <div class="progress">
@@ -41,7 +41,7 @@
     <div class="nav-btn"><i class="material-icons">list</i></div>
 </a>
 
-<#include "../menu.html">
+<#include "/blog/menu.html">
 
 <div id="content-outer">
     <div id="content-inner">
@@ -50,7 +50,7 @@
                 <ul class="tag-list">
                     <#list tags as tag>
                         <li class="tag-list-item">
-                            <a class="tag-list-link" href="/tag/tag-list-article/${tag.id}">${tag.tagName}</a>
+                            <a class="tag-list-link" href="/blog/tag/tag-list-article/${tag.id}">${tag.tagName}</a>
                         </li>
                     </#list>
                 </ul>
@@ -59,16 +59,16 @@
     </div>
 </div>
 
-    <#include "../foot.html">
+    <#include "/blog/foot.html">
 
 </body>
     <!--影集界面需要的资源-->
 
     <!-- scripts list from theme config.yml -->
-    <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/materialize.min.js"></script>
-    <script src="/js/lazyload.min.js"></script>
-    <script src="/js/jquery.rotate.min.js"></script>
-    <script src="/js/Vateral.min.js"></script>
+    <script src="/blog/js/jquery-3.1.1.min.js"></script>
+    <script src="/blog/js/materialize.min.js"></script>
+    <script src="/blog/js/lazyload.min.js"></script>
+    <script src="/blog/js/jquery.rotate.min.js"></script>
+    <script src="/blog/js/Vateral.min.js"></script>
 
 </html>
