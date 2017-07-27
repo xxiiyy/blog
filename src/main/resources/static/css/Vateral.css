@@ -245,6 +245,7 @@ body{
     background-color: rgba(61, 61, 61, 0.23);
     z-index: 99;
 }
+
 .nav-search input{
     width: 96.5%;
     color: white;
@@ -283,6 +284,8 @@ body{
     padding-right: 8px;
 
 }
+
+
 
 #local-search-result ul.search-result-list li:hover {
 }

@@ -1,7 +1,7 @@
 package com.lhd.service.Impl;
 
-import com.lhd.dto.ArchiveDto;
-import com.lhd.dto.ArticleDto;
+import com.lhd.dto.ArchiveDTO;
+import com.lhd.dto.ArticleDTO;
 import com.lhd.mapper.ArticleMapper;
 import com.lhd.service.IArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +21,8 @@ public class ArticleServiceImpl implements IArticleService{
     @Autowired
     private ArticleMapper articleMapper;
 
-
     @Override
-    public List<ArticleDto> selectArticleDtoList(Map<String, Object> paramMap) {
+    public List<ArticleDTO> selectArticleDtoList(Map<String, Object> paramMap) {
         return articleMapper.selectArticleDtoList(paramMap);
     }
 
@@ -33,17 +32,17 @@ public class ArticleServiceImpl implements IArticleService{
     }
 
     @Override
-    public ArticleDto selectArticleDto(String articleId) {
+    public ArticleDTO selectArticleDto(String articleId) {
         return articleMapper.selectArticleDto(articleId);
     }
 
     @Override
-    public List<ArchiveDto> selectArchive(int year) {
+    public List<ArchiveDTO> selectArchive(int year) {
         return articleMapper.selectArchive(year);
     }
 
     @Override
-    public List<ArticleDto> selectArticleYM(ArchiveDto archiveDto) {
-        return articleMapper.selectArticleYM(archiveDto);
+    public List<ArticleDTO> selectArticleYM(ArchiveDTO archiveDTO) {
+        return articleMapper.selectArticleYM(archiveDTO);
     }
 }

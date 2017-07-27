@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <meta name="keywords" content="recall博客">
+    <meta name="description" content="recall博客">
+
+    <title>recall & blog</title>
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="/ico/icon.ico" type="image/x-icon"/>
+
+    <!-- stylesheets list from config.yml -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/Vateral.min.css">
+
+
+    <!-- Single Gallery Page -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/magnific-popup.css" rel="stylesheet">
+    <link href="/css/templatemo_style.css" rel="stylesheet" type="text/css">
+
+    <style type="text/css">
+        html, body {
+            font-family: sans-serif;
+            font-weight: 300 !important;
+        }
+
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(/fonts/MaterialIcons-Regular.eot);
+            src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+            url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+            url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+        }
+    </style>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css">
+    <script src="/js/prism.js"></script>
+</head>
+<body>
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+<a data-activates="slide-out" class="button-collapse">
+    <div class="nav-btn"><i class="material-icons">list</i></div>
+</a>
+<#include "../menu.html">
+<div id="content-outer">
+    <div id="content-inner">
+        <style type="text/css">
+            form {
+                float: left;
+                font-weight: 400;
+                max-width: 300px;
+                width: 100%;
+            }
+
+            #local-search-result li:first-child {
+                margin-top: 45px;
+            }
+
+            @media screen and (max-width: 980px) {
+                form {
+
+                    margin: 0 auto;
+                }
+            }
+
+            content img {
+                width: 100%;
+            }
+        </style>
+        <div class="main-container" id="photo">
+            <nav class="main-nav"
+                 style="background-color: white;border-bottom: #DDDDDD 1px solid;box-shadow: none;height: 104px">
+                <div id="logo" class="left" style="color: #707070">影集</div>
+            </nav>
+            <div class="content-container">
+                <header>
+                    <h1 class="center-text">lhdzzz</h1>
+                    <h2 class="center-text">。。。。</h2>
+                </header>
+                <div id="portfolio-content" class="center-text">
+                    <div class="portfolio-page">
+                        暂时没有
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <#include "../foot.html">
+
+
+</body>
+<!--影集界面需要的资源-->
+
+<script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="/js/templatemo_script.js"></script>
+<script type="text/javascript" src="/js/exif.js"></script>
+<script type="text/javascript" src="/js/photopage.js"></script>
+<script type="text/javascript">
+
+    var boxes = $('.portfolio-item');
+    boxes.magnificPopup({
+        type: 'image',
+        gallery: {
+            enabled: true
+        }
+    });
+
+</script>
+
+<!-- scripts list from theme config.yml -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/jquery.rotate.min.js"></script>
+<script src="/js/Vateral.min.js"></script>
+
+</html>

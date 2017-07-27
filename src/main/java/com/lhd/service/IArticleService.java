@@ -1,9 +1,8 @@
 package com.lhd.service;
 
 
-import com.lhd.dto.ArchiveDto;
-import com.lhd.dto.ArticleDto;
-import org.apache.ibatis.annotations.Param;
+import com.lhd.dto.ArchiveDTO;
+import com.lhd.dto.ArticleDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ public interface IArticleService {
      * @param paramMap
      * @return
      */
-    List<ArticleDto> selectArticleDtoList(Map<String,Object> paramMap);
+    List<ArticleDTO> selectArticleDtoList(Map<String,Object> paramMap);
 
     /**
      * 获取这个分类下一共有多少
@@ -32,18 +31,18 @@ public interface IArticleService {
      * 使用id查询
      * @return
      */
-    ArticleDto selectArticleDto( String articleId);
+    ArticleDTO selectArticleDto(String articleId);
 
     /**
      * 获取归档信息
      * @param year
      * @return
      */
-    List<ArchiveDto> selectArchive(int year);
+    List<ArchiveDTO> selectArchive(int year);
 
     /**
      * 返回某年某月的博客信息
      * @return
      */
-    List<ArticleDto> selectArticleYM(ArchiveDto archiveDto);
+    List<ArticleDTO> selectArticleYM(ArchiveDTO archiveDTO);
 }

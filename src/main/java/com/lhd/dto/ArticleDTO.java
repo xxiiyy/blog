@@ -1,12 +1,19 @@
 package com.lhd.dto;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by lhd on 2017/5/14.
  * 博客文章
  */
-public class ArticleDto {
+@Document(indexName = "blog", type = "article")
+public class ArticleDTO implements Serializable{
+
+    private static final long serialVersionUID = -1L;
 
     /**
      * 文章id，唯一标识
@@ -192,7 +199,7 @@ public class ArticleDto {
 
     @Override
     public String toString() {
-        return "ArticleDto{" +
+        return "ArticleDTO{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", subtitle='" + subtitle + '\'' +
@@ -209,4 +216,5 @@ public class ArticleDto {
                 ", createBy='" + createBy + '\'' +
                 '}';
     }
+
 }

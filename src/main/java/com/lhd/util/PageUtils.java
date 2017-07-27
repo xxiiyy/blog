@@ -33,9 +33,4 @@ public class PageUtils {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-
-        System.out.println(getPagination(2,"",3));
-    }
-
 }

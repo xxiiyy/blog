@@ -3,7 +3,7 @@ package com.lhd.dto;
 /**
  * Created by lhd on 2017/5/17.
  */
-public class ArchiveDto {
+public class ArchiveDTO {
 
     private int aYear;
 
@@ -37,7 +37,7 @@ public class ArchiveDto {
 
     @Override
     public String toString() {
-        return "ArchiveDto{" +
+        return "ArchiveDTO{" +
                 "aYear=" + aYear +
                 ", aMonth=" + aMonth +
                 ", aCount=" + aCount +

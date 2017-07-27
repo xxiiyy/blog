@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="recall博客">
+    <meta name="description" content="recall博客">
+
+    <title>recall & blog</title>
+
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/Vateral.min.css">
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="/ico/icon.ico" type="image/x-icon"/>
+
+    <style type="text/css">
+        html, body {
+            font-family: sans-serif;
+            font-weight: 300 !important;
+        }
+        @font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(/fonts/MaterialIcons-Regular.eot);
+            src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+            url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+            url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+        }
+    </style>
+    <link rel="stylesheet" href="/css/prism.css" type="text/css">
+    <script src="/js/prism.js"></script>
+</head>
+<body>
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+<a data-activates="slide-out" class="button-collapse">
+    <div class="nav-btn"><i class="material-icons">list</i></div>
+</a>
+
+<#include "../menu.html">
+
+
+
+    <div id="content-outer">
+        <div id="content-inner">
+
+            <div class="post-header" style="height: 40px">
+                <div class="nav-search">
+                    <form> <!-- 搜索框相关 -->
+                        <input type="text" onkeyup="searches()" id="search-input"  results="0" placeholder="搜索..."
+                               class="search form-control" />
+                        <div class="nav-search-img"><i class="material-icons">search</i></div>
+                    </form>
+                    <div id="local-search-result"></div> <!-- 搜索结果区 -->
+                    <p class='no-result'>无搜索结果</p>
+                </div>
+            </div>
+
+            <div id="recent-posts">
+
+                <!-- for begin -->
+
+                <!-- for end -->
+
+            </div>
+
+        </div>
+    </div>
+
+    <#include "../foot.html">
+
+</body>
+<!--影集界面需要的资源-->
+
+<!-- scripts list from theme config.yml -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/jquery.rotate.min.js"></script>
+<script src="/js/Vateral.min.js"></script>
+
+<script>
+    function searches() {
+        var info = $('#search-input').val();
+        $.ajax({
+            type: "GET",
+            url: "/search/"+info,
+            dataType: "json",
+            success: function(data){
+                $('#recent-posts').empty();   //清空resText里面的所有内容
+                var html = '';
+                $.each(data, function(commentIndex, comment){
+                    html += '<div class="recent-post-item lazy" data-original="'+ comment['cover'] +'">'
+                        + '<a class="recent-post-link" href="/article-detail/'+ comment['id'] +'">'
+                        + '<div class="post-hover">'
+                        + '<p class="post-title"><a href="/article-detail/'+comment['id']+'">'+comment['title']+'</a></p>'
+                        + '<p class="post-time">作者: '+comment['author']+' &nbsp &nbsp 发布于:'
+                        + '<time datetime="2017-05-16T07:26:11.000Z">'
+                        + comment['createTime']
+                        + '</time></p>'
+                        + '标签: <ul class="tag-list">'
+                        + '<li class="tag-list-item"><a class="tag-list-link" href="/article-detail/'+ comment['id']+'">'+ comment['tagChain']+'</a></li> </ul>'
+                        + ' 分类: <ul class="category-list">'
+                        + '<li class="category-list-item"><a class="category-list-link" href="/article-detail/'+ comment['id']+'">'+ comment['classify']+'</a> </li> </ul>'
+                        + '<div class="post-excerpt"> <p>'
+                        +  comment['subtitle'] + '</p> </div>'
+                        + '<div class="post-more"><a href="/article-detail/'+ comment['id']+'">全文阅读</a></div>'
+                        + '</div> </a> </div>';
+                });
+                $('#recent-posts').html(html);
+            }
+        });
+    }
+
+</script>
+
+</html>

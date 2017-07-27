@@ -3,7 +3,7 @@
 <mapper namespace="com.lhd.mapper.ArticleMapper">
 
     <!-- 映射 -->
-    <!--<resultMap id="BaseArticleDtoMapper" type="com.lhd.dto.ArticleDto">
+    <!--<resultMap id="BaseArticleDtoMapper" type="com.lhd.dto.ArticleDTO">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>
@@ -21,7 +21,7 @@
 
 
     <select id="selectArticleDtoList" parameterType="java.util.HashMap"
-            resultType="com.lhd.dto.ArticleDto">
+            resultType="com.lhd.dto.ArticleDTO">
         SELECT b.id,b.title,b.subtitle,b.tagId,c.classify,b.cover,
                 b.author,b.createTime
         FROM sys_blog b,sys_classify c
@@ -45,7 +45,7 @@
     </select>
 
     <select id="selectArticleDto" parameterType="java.lang.String"
-            resultType="com.lhd.dto.ArticleDto">
+            resultType="com.lhd.dto.ArticleDTO">
         SELECT b.id,b.title,b.subtitle,b.author,b.tagId,c.classify,
         b.click,b.cover,b.content,b.createTime
         FROM sys_classify c,sys_blog b
@@ -58,7 +58,7 @@
     </select>
 
     <!-- 查询归档信息 -->
-    <select id="selectArchive" resultType="com.lhd.dto.ArchiveDto"
+    <select id="selectArchive" resultType="com.lhd.dto.ArchiveDTO"
             parameterType="java.lang.Integer">
         select month(createTime) aMonth,count(*) aCount,year(createTime) aYear
         from sys_blog
@@ -69,8 +69,8 @@
 
 
     <!-- 查询某年某月归档信息 -->
-    <select id="selectArticleYM" parameterType="com.lhd.dto.ArchiveDto"
-            resultType="com.lhd.dto.ArticleDto">
+    <select id="selectArticleYM" parameterType="com.lhd.dto.ArchiveDTO"
+            resultType="com.lhd.dto.ArticleDTO">
         select b.id,b.title,b.subtitle,b.author,b.tagId,c.classify,
         b.click,b.cover,b.content,b.createTime
         from sys_classify c,sys_blog b

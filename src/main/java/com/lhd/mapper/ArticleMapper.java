@@ -1,8 +1,8 @@
 package com.lhd.mapper;
 
 
-import com.lhd.dto.ArchiveDto;
-import com.lhd.dto.ArticleDto;
+import com.lhd.dto.ArchiveDTO;
+import com.lhd.dto.ArticleDTO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public interface ArticleMapper{
      * @param paramMap
      * @return
      */
-    List<ArticleDto> selectArticleDtoList(@Param("paramMap") Map<String,Object> paramMap);
+    List<ArticleDTO> selectArticleDtoList(@Param("paramMap") Map<String,Object> paramMap);
 
     /**
      * 获取这个分类下一共有多少
@@ -32,19 +32,19 @@ public interface ArticleMapper{
      * 使用id查询
      * @return
      */
-    ArticleDto selectArticleDto(@Param("articleId") String articleId);
+    ArticleDTO selectArticleDto(@Param("articleId") String articleId);
 
     /**
      * 获取归档信息
      * @param year
      * @return
      */
-    List<ArchiveDto> selectArchive(@Param("year") int year);
+    List<ArchiveDTO> selectArchive(@Param("year") int year);
 
     /**
      * 返回某年某月的博客信息
      * @return
      */
-    List<ArticleDto> selectArticleYM(ArchiveDto archiveDto);
+    List<ArticleDTO> selectArticleYM(ArchiveDTO archiveDTO);
 
 }
